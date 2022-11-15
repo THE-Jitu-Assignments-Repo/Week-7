@@ -1,16 +1,16 @@
-
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { login, logout, selectUser } from './features/auth/userSlice';
-import { auth, onAuthStateChanged } from './config/firebase';
-import Home from "./pages/Home"
-import Login from './pages/Login';
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { login, logout, selectUser } from "./features/auth/userSlice";
+import { auth, onAuthStateChanged } from "./config/firebase";
+import Login from "./pages/Login";
+import Layout from "./components/Layouts/Layout";
+import Routers from "./routes/Routers";
 
 function App() {
-    const user = useSelector(selectUser);
-    const dispatch = useDispatch();
+  const user = useSelector(selectUser);
+  const dispatch = useDispatch();
 
-// check at page load if a user is authenticated
+  // check at page load if a user is authenticated
   useEffect(() => {
     onAuthStateChanged(auth, (userAuth) => {
       if (userAuth) {
@@ -31,20 +31,10 @@ function App() {
 
   return (
     <div className="App">
-      <Home />
-       {/* // check if a user is logged in */}
-      {!user ? (
-        // display the login form 
-        <Login />
-      ) : (
-        // display the rest of the app
-        <div className='app__body'>
-          {/* Rest of the app */}
-        </div>
-      )}
-  
+      <Routers />
+      {!user && <Login />}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

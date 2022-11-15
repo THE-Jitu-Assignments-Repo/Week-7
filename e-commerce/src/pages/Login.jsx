@@ -7,6 +7,7 @@ import {
 } from '../config/firebase';
 import { useDispatch } from 'react-redux';
 import { login } from '../features/auth/userSlice';
+import './login.css'
 
 function Login() {
 // use state constants for the the form inputs
@@ -75,9 +76,10 @@ function Login() {
   };
 
   return (
-    <div>
-      <div className='login'>
-        <form>
+    <div className='login'>
+      <div className='login--form--container' >
+          <h2>Login to E-market</h2>
+        <form className='login--form'>
           <input
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -103,7 +105,7 @@ function Login() {
             placeholder='Password'
             type='password'
           />
-          <button type='submit' onClick={loginToApp}>
+          <button type='submit' className='sign--in' onClick={loginToApp}>
             Sign In
           </button>
         </form>

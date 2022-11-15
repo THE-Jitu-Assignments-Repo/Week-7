@@ -1,0 +1,93 @@
+/* .css-button-arrow--black {
+  min-width: 130px;
+  height: 40px;
+  color: #fff;
+  padding: 5px 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  outline: none;
+  overflow: hidden;
+  border-radius: 5px;
+  border: none;
+  background-color: #343a40;
+}
+.css-button-arrow--black:hover {
+  border-radius: 5px;
+  padding-right: 24px;
+  padding-left: 8px;
+}
+.css-button-arrow--black:hover:after {
+  opacity: 1;
+  right: 10px;
+}
+.css-button-arrow--black:after {
+  content: "\00BB";
+  position: absolute;
+  opacity: 0;
+  font-size: 20px;
+  line-height: 40px;
+  top: 0;
+  right: -20px;
+  transition: 0.4s;
+} */
+.login {
+  /* border: 2px solid red; */
+  border-radius: 5px;
+  margin: 50px auto;
+  max-width: 30%;
+  max-height: 70vh;
+  box-shadow: 3px 4px 3px 3px #343a40;
+}
+
+.login--form--container{
+    padding-top: 15px;
+}
+
+.login--form {
+  display: flex;
+  flex-direction: column;
+  max-width: 90%;
+  row-gap: 10px;
+  /* justify-content: center; */
+  /* border: 2px solid red; */
+  margin: 50px auto;
+  padding: 20px;
+}
+.login--form input{
+    height: 2.5em;
+    padding: 5px;
+}
+
+
+.login--form--container h2, p{
+    text-align: center;
+    padding: 5px;
+}
+.login__register{
+    padding: 5px;
+}
+.login__register:hover{
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+}
+
+
+.login--form button{
+    max-width: 50%;
+    background-color: blue;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 3px;
+    align-self: center;
+}
+.sign--in{
+    font: 1em sans-serif;
+}
+.login--form button:hover{
+    background-color: rgb(140, 140, 236);
+}
