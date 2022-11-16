@@ -7,9 +7,11 @@ import {
 } from '../config/firebase';
 import { useDispatch } from 'react-redux';
 import { login } from '../features/auth/userSlice';
+import { useNavigate } from 'react-router-dom';
 import './login.css'
 
 function Login() {
+  const navigate = useNavigate();
 // use state constants for the the form inputs
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -34,7 +36,10 @@ function Login() {
             photoUrl: userAuth.user.photoURL,
           })
         );
-      })
+      },
+      navigate('/')
+      )
+
 // display the error if any
       .catch((err) => {
         alert(err);

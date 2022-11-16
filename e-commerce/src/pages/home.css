@@ -1,0 +1,33 @@
+.hero--banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100vw;
+  overflow-x: scroll;
+  position: relative;
+  transition: width 2s;
+}
+
+@keyframes my {
+  0% {
+    left: 0px;
+  }
+  25% {
+    left: 500px;
+  }
+  75% {
+    left: 50px;
+  }
+  100% {
+    left: 100px;
+  }
+}
+.hero--banner img {
+  position: relative;
+  width: 1000%;
+  height: 400px;
+  vertical-align: middle;
+  border: 0;
+  animation: my 5s infinite;
+    
+}

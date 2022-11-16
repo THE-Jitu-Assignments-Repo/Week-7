@@ -1,14 +1,35 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { auth } from "../../config/firebase";
-import { logout, selectUser } from "../../features/auth/userSlice";
-import { Link } from "react-router-dom";
-import {FaEnvelope, FaUser} from 'react-icons/fa'
+import { auth, onAuthStateChanged } from "../../config/firebase";
+import { logout, selectUser, login } from "../../features/auth/userSlice";
+import { Link, useNavigate } from "react-router-dom";
+import {FaCaretDown, FaEnvelope, FaShoppingCart, FaUser} from 'react-icons/fa'
 import {BsFillBasket3Fill} from 'react-icons/bs'
 import "./Layout.css";
 
 
 function Header() {
+    const navigate = useNavigate();
+
+    // check at page load if a user is authenticated
+  useEffect(() => {
+    onAuthStateChanged(auth, (userAuth) => {
+      if (userAuth) {
+        // user is logged in, send the user's details to redux, store the current user in the state
+        dispatch(
+          login({
+            email: userAuth.email,
+            uid: userAuth.uid,
+            displayName: userAuth.displayName,
+            photoUrl: userAuth.photoURL,
+          })
+        );
+      } else {
+        dispatch(logout());
+      }
+    });
+  }, []);
+
   const dispatch = useDispatch();
 
   const logoutOfApp = () => {
@@ -16,30 +37,42 @@ function Header() {
     dispatch(logout());
     // sign out function from firebase
     auth.signOut();
+    navigate('/login')
   };
 
   const user = useSelector(selectUser);
+  console.log(user);
+
+//   if (!user) {
+//     return <Navigate to="/login" />
+//   }
 
   return (
     <div className="header-main">
       <div className="navbar">
         <div className="title--tag">
-          <h2>E-Market</h2>
+          <h2><i className="title--tag--E">E</i><span>-Market</span></h2>
         </div>
         <div className="navlinks">
           <nav className="nav--links">
+            {!user &&<Link to="login" className="links--tag"><FaUser /> Login/Register</Link>}
             {user && <Link to="home" className="links--tag">Home</Link> }  
             {user && <Link to="/products" className="links--tag"><BsFillBasket3Fill />Products</Link>}
             {user && <Link to="/about"  className="links--tag">About</Link>}
             {user && <Link to="/contact" className="links--tag"><FaEnvelope /> Contact</Link>}
             {user && (
-                <button
-                className="css-button--arrow--black"
-                onClick={logoutOfApp}
-                >
-                <FaUser /> Logout
-              </button>
+                <div className="dropdown"><FaUser /> Settings <FaCaretDown/>
+                    <div className="dropdown--content">
+
+                <ul>
+
+                    <li className="css-button--arrow--black" onClick={logoutOfApp}> Logout</li>
+                    <li className="css-button--arrow--black" onClick={logoutOfApp}>Login/Register</li>
+                </ul>
+                    </div>
+              </div>
             )}
+            {user && <Link to="cart" className="links--tag">Cart <FaShoppingCart size={20} /><p>0</p></Link>}
           </nav>
         </div>
       </div>

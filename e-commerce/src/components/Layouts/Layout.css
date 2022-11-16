@@ -1,8 +1,10 @@
 .header-main {
   width: 100vw;
-  height: 50px;
+  height: 60px;
   box-shadow: 3px 3px 6px 6px #888888;
-  margin-bottom: 20px;
+  margin-bottom: 2px;
+  background: #156192;
+  color: #fff;
 }
 
 .navbar {
@@ -31,8 +33,11 @@
   text-decoration: none;
   display: flex;
   font-size: 18px;
+  color: #fff;
 }
-
+.links--tag:hover {
+  color: #febf00;
+}
 .nav--links button {
   background-color: blue;
   color: #fff;
@@ -55,4 +60,46 @@
   left: 0;
   bottom: 0;
   text-align: center;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+  color: white;
+  font-size: 16px;
+  border: none;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.dropdown--content {
+  display: none;
+  position: absolute;
+  background: #156192;
+  /* border: 2px solid red; */
+  height: 50px;
+  z-index: 1;
+  width: 150%;
+  top: 100%;
+  left: 5px;
+  margin: 2px auto;
+  border-radius: 3px;
+}
+.dropdown--content ul {
+  display: block;
+  justify-content: flex-end;
+  list-style: none;
+  padding: 8px;
+  
+}
+.dropdown--content ul li:hover{
+    color: #febf00;
+}
+
+.dropdown:hover .dropdown--content {
+  display: block;
+}
+
+.title--tag--E{
+     color: #febf00;
 }
