@@ -21,8 +21,10 @@
 .product--card__top img{
     width: 100%;
     /* background-color: #fff5; */
-    border-radius: 0 5px;
+    border-radius: 5px 5px 0 0;
     height: 100%;
+    object-fit: fill;
+    object-position: center;
     
 }
 .product--card__top{
@@ -51,6 +53,7 @@
     background-color: gold;
     padding: 3px;
     border-radius: 3px;
+    text-decoration-line: line-through;
 }
 .title--card{
     font-family: 'Times New Roman', Times, serif;
@@ -70,5 +73,13 @@
     justify-content: space-between;
 }
 .product--cart:hover{
-    color: gold;
+    color: rgb(245, 201, 8);
+}
+
+.image--product{
+    transform: scale(1);
+    transition: .5s ease;
+}
+.image--product:hover{
+    transform: scale(.3);
 }

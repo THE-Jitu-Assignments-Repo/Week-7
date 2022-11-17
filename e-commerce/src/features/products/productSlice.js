@@ -19,7 +19,7 @@ export const postProduct = createAsyncThunk(
 
         const response = await axios.post(url, product)
         return response.data
-        getProduct()
+        // getProduct()
     }
 )
 
@@ -56,6 +56,12 @@ export const getProduct = createAsyncThunk(
 export const productSlice = createSlice({
     name: "products",
     initialState,
+    reducers: {
+        AddCart: (state, action) => {
+            let selectedItem = state.product.find(item => item.id === action.payload);
+            state.cart.push(selectedItem);
+        }
+    },
     extraReducers(builder) {
         builder.addCase(getProduct.fulfilled, (state, action) => {
                 state.product = action.payload;
@@ -67,5 +73,6 @@ export const productSlice = createSlice({
     }
 })
 
+export const { AddCart } = productSlice.actions;
 
 export default productSlice.reducer;

@@ -42,6 +42,8 @@ function Header() {
 
   const user = useSelector(selectUser);
 
+  const { cart }= useSelector(state=> state.product)
+  console.log(cart);
 //   if (!user) {
 //     return <Navigate to="/login" />
 //   }
@@ -71,7 +73,7 @@ function Header() {
                     </div>
               </div>
             )}
-            {user && <Link to="cart" className="links--tag">Cart <FaShoppingCart size={20} /><p>0</p></Link>}
+            {user && <Link to="cart" className="links--tag">Cart <FaShoppingCart size={20} /><p>{cart?.length}</p></Link>}
           </nav>
         </div>
       </div>

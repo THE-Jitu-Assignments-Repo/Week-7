@@ -99,7 +99,7 @@ function Products() {
           </div>
         </div>
         <div className="content--content">
-          {product.map((data) => (
+          {product?.map((data) => (
              <ProductCard data={data}/>
           ))}
         </div>
