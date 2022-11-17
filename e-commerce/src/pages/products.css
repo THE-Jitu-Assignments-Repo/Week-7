@@ -1,5 +1,4 @@
 .product--main {
-  /* border: 2px solid red; */
   margin-top: 20px;
 }
 
@@ -16,7 +15,6 @@
 }
 
 .categories {
-  /* border: 2px solid red; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -25,7 +23,6 @@
   row-gap: 10px;
 }
 .categories--links {
-  /* border: 2px solid red; */
   padding-bottom: 10px;
 }
 .categories--links li {
@@ -34,7 +31,6 @@
   padding: 5px;
   cursor: pointer;
   padding-left: 5px;
-  /* border: 2px solid red; */
   justify-content: center;
   align-content: center;
   display: flex;
@@ -48,13 +44,10 @@
   display: flex;
   padding-top: 10px;
   padding-right: 20px;
-  /* border: 2px solid red; */
 }
-hr{
-    /* border: 2px solid red; */
-    width: 2em;
-    display: flex;
-    
+hr {
+  width: 2em;
+  display: flex;
 }
 .content--nav {
   width: calc(100% - 160px);
@@ -68,30 +61,45 @@ hr{
   padding-left: 10px;
   border: none;
   box-shadow: 4px 4px 4px 0px #8da2b3;
+  /* border: 2px solid red; */
 }
 
-.content--nav button{
-    background: #5b96c7;
-    color: #fff;
-    padding: 8px;
-    border: none;
-    border-radius: 3px;
-    padding-right: 10px;
-    cursor: pointer;
+.content--nav button {
+  background: #5b96c7;
+  color: #fff;
+  padding: 8px;
+  border: none;
+  border-radius: 3px;
+  padding-right: 10px;
+  cursor: pointer;
 }
-.content--nav button:hover{
-    background: #9cc4e4;
+.content--nav button:hover {
+  background: #9cc4e4;
 }
-.content-sorters{
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    gap: 10px;
+.content-sorters {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  gap: 10px;
 }
-.content-sorters button{
-    padding: 5px;
-    cursor: pointer;
+.content-sorters button {
+  padding: 5px;
+  cursor: pointer;
 }
-.content-sorters button:hover{
-    background: #9cc4e4;
+.content-sorters button:hover {
+  background: #9cc4e4;
+}
+
+.content--content {
+  width: calc(100% - 160px);
+  position: absolute;
+  left: 160px;
+  padding-top: 80px;
+  display: flex;
+  /* border: 2px solid red; */
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 50px auto;
+  z-index: -1;
+  padding-bottom: 4em;
 }

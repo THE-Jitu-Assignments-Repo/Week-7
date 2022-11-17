@@ -1,0 +1,58 @@
+.main--modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  bottom: 0;
+  backdrop-filter: blur(5px);
+}
+
+.modal--content {
+  display: block;
+  background-color: #fff;
+  background: #156192;
+  position: absolute;
+  width: 500px;
+  top: 80px;
+  border-radius: 5px;
+  left: 30%;
+  color: #fff;
+  box-shadow: 3.5px 3px 2.2px rgba(0, 0, 0, 0.051),
+    8.5px 7.2px 5.3px rgba(0, 0, 0, 0.07), 16px 13.6px 10px rgba(0, 0, 0, 0.082),
+    28.6px 24.3px 17.9px rgba(0, 0, 0, 0.092),
+    53.5px 45.5px 33.4px rgba(0, 0, 0, 0.105),
+    128px 109px 80px rgba(0, 0, 0, 0.14);
+    
+    border-radius: 5px;
+    height: 70vh;
+    padding: 10px;
+    z-index: 1;
+}
+.close{
+    margin-top: .5em;
+    display: flex;
+   align-items: center;
+   justify-content: center;
+   column-gap: 4em;
+}
+.close h3{
+    text-align: center;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  row-gap: 20px;
+}
+
+.form input{
+    padding: 4px;
+    flex: 0 0 auto;
+    height: 100%;
+}
+
+.close--close:hover{
+    color: gold;
+    cursor: pointer;
+}
