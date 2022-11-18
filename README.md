@@ -31,6 +31,7 @@ Add validation to Add product form (don’t use required)
  
  
  
- 
+ ![ui emarhet](https://user-images.githubusercontent.com/65639270/202531331-6be9d615-f578-45e6-b5de-931025817c94.PNG)
+
  
 
