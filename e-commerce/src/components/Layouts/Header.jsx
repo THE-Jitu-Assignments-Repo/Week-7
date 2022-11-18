@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { auth, onAuthStateChanged } from "../../config/firebase";
 import { logout, selectUser, login } from "../../features/auth/userSlice";
 import { Link, useNavigate } from "react-router-dom";
-import {FaCaretDown, FaEnvelope, FaShoppingCart, FaUser} from 'react-icons/fa'
+import {FaCaretDown, FaEnvelope, FaShoppingCart, FaUser, FaUserLock} from 'react-icons/fa'
 import {BsFillBasket3Fill} from 'react-icons/bs'
 import "./Layout.css";
 
@@ -61,19 +61,19 @@ function Header() {
             {user && <Link to="/products" className="links--tag"><BsFillBasket3Fill />Products</Link>}
             {user && <Link to="/about"  className="links--tag">About</Link>}
             {user && <Link to="/contact" className="links--tag"><FaEnvelope /> Contact</Link>}
+            {user && <Link to="cart" className="links--tag">Cart <FaShoppingCart size={20} /><p className="cart--num">{cart?.length}</p></Link>}
             {user && (
-                <div className="dropdown"><FaUser /> Settings <FaCaretDown/>
+                <div className="dropdown"><span>Settings </span><FaCaretDown/>
                     <div className="dropdown--content">
 
                 <ul>
 
-                    <li className="css-button--arrow--black" onClick={logoutOfApp}> Logout</li>
-                    <li className="css-button--arrow--black" onClick={logoutOfApp}>Login/Register</li>
+                    <li className="css-button--arrow--black"><FaUser />Profile</li>
+                    <li className="css-button--arrow--black" onClick={logoutOfApp}><FaUserLock /> Logout</li>
                 </ul>
                     </div>
               </div>
             )}
-            {user && <Link to="cart" className="links--tag">Cart <FaShoppingCart size={20} /><p>{cart?.length}</p></Link>}
           </nav>
         </div>
       </div>

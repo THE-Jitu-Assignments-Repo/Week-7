@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { AiOutlineCloseSquare } from "react-icons/ai";
 import { useDispatch } from "react-redux";
-import { postProduct } from "../../features/products/productSlice";
+import { getProduct, postProduct } from "../../features/products/productSlice";
 import "./modal.css";
 
 function Addproduct({setIsOpen}) {
@@ -25,6 +25,7 @@ function Addproduct({setIsOpen}) {
 const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(postProduct(newproduct));
+    dispatch(getProduct());
     setIsOpen()
   };
 

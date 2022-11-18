@@ -15,17 +15,19 @@ const initialState = {
 
 export const postProduct = createAsyncThunk(
     "products/postProducts",
-    async (product) => {
+    async (product,thunkApi) => {
 
         const response = await axios.post(url, product)
+      
+        thunkApi.dispatch(getProduct()) // mike note this very key "wisdom"
         return response.data
-        // getProduct()
     }
 )
 
 export const getProduct = createAsyncThunk(
     "products/getProduct",
     async () => {
+        
         try {
 
             const response = await axios.get(url)
@@ -67,7 +69,8 @@ export const productSlice = createSlice({
                 state.product = action.payload;
             }),
             builder.addCase(postProduct.fulfilled, (state, action) => {
-                state.product.push(action.payload)
+                state.product.push(action.payload);
+                // getProduct();
             })
 
     }
