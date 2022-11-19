@@ -92,6 +92,9 @@ export const productSlice = createSlice({
             
 
             state.cart = selectedQ 
+        },
+        RemoveALL: (state)=>{
+            state.cart = [];
         }
     },
     extraReducers(builder) {
@@ -109,7 +112,8 @@ export const {
     AddCart,
     RemoveSingle,
     addQuantity,
-    reduceQuantity
+    reduceQuantity,
+    RemoveALL
 } = productSlice.actions;
 
 export default productSlice.reducer;
