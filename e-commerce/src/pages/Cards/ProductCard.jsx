@@ -1,16 +1,19 @@
 import React from "react";
 import { FaShoppingBag } from "react-icons/fa";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { AddCart } from "../../features/products/productSlice";
 
 import "./productcard.css"
 
-function ProductCard({data}) {
-
+function ProductCard({data,id}) {
+    const {cart} = useSelector(state=>state.product)
     const dispatch = useDispatch()
-
+    // console.log(data.id);
     const handleCart =(data)=>{
-        dispatch(AddCart(data))
+        if( !cart.some(cartItem => cartItem.id == id)){            
+            dispatch(AddCart(data))
+        }
+            
     }
  
   return (

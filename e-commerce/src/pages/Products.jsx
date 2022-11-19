@@ -11,10 +11,7 @@ function Products() {
   const [isopen, setIsOpen] = useState(false);
 
   const { product } = useSelector((state) => state.product);
-  console.log(
-    "teeeet",
-    product
-  );
+  
 
   const dispatch = useDispatch();
 
@@ -100,7 +97,7 @@ function Products() {
         </div>
         <div className="content--content">
           {product?.map((data) => (
-             <ProductCard data={data}/>
+             <ProductCard id={data.id} data={data}/>
           ))}
         </div>
       </div>

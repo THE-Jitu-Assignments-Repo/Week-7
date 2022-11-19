@@ -43,10 +43,7 @@ function Header() {
   const user = useSelector(selectUser);
 
   const { cart }= useSelector(state=> state.product)
-  console.log(cart);
-//   if (!user) {
-//     return <Navigate to="/login" />
-//   }
+
 
   return (
     <div className="header-main">

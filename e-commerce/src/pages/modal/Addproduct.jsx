@@ -24,7 +24,7 @@ function Addproduct({setIsOpen}) {
 
 const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(postProduct(newproduct));
+    dispatch(postProduct({...newproduct, Quantity:1}));
     dispatch(getProduct());
     setIsOpen()
   };
