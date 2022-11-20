@@ -1,4 +1,5 @@
 import React from "react";
+import { FaFileExport } from "react-icons/fa";
 import {  useDispatch, useSelector } from "react-redux";
 import { RemoveALL } from "../features/products/productSlice";
 import Cartcard from "./Cards/Cartcard";
@@ -19,7 +20,7 @@ function Cart() {
     <div className="cart--content">
       <div className="cart--content--header">
         <span className="cart--head--tag">E-Market Cart</span>
-        <span className="remove--all" onClick={handleRemove}>Remove ALL Items</span>
+        <span className="remove--all" onClick={handleRemove}>CLEAR CART</span>
       </div>
       {cart?.map((item) => (
         <Cartcard item={item} />
