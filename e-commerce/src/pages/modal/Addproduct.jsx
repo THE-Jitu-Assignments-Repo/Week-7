@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { getProduct, postProduct } from "../../features/products/productSlice";
 import "./modal.css";
 
-function Addproduct({setIsOpen}) {
+function Addproduct({ setIsOpen }) {
   const dispatch = useDispatch();
   const [newproduct, setNewProduct] = useState({
     title: "",
@@ -16,29 +16,45 @@ function Addproduct({setIsOpen}) {
   });
 
   const handleChange = (e) => {
-    setNewProduct((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }));
-};
-
-const handleSubmit = (e) => {
-    e.preventDefault();
-    dispatch(postProduct({...newproduct, Quantity:1}));
+      setNewProduct((prev) => ({
+          ...prev,
+          [e.target.name]: e.target.value,
+        }));
+    };
+    
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // form validation
+        if (
+          e.target.title == "" ||
+          e.target.category == "" ||
+          e.target.description === "" ||
+          e.target.image == "" ||
+          e.target.price == "" ||
+          e.target.discount == ""
+        ) {
+            console.log("validation");
+          alert("Please fill out the whole form to add a new product",);
+          
+        }
+    dispatch(postProduct({ ...newproduct, Quantity: 1 }));
     dispatch(getProduct());
-    setIsOpen()
+    // setIsOpen();
   };
-
 
   return (
     <div className="main--modal">
       <div className="modal--content">
         <div className="modal--form">
-          <div className="close" >
-             <h3>ADD NEW PRODUCTS</h3>
-            <AiOutlineCloseSquare size={30} onClick={setIsOpen} className='close--close'/>
+          <div className="close">
+            <h3>ADD NEW PRODUCTS</h3>
+            <AiOutlineCloseSquare
+              size={30}
+              onClick={setIsOpen}
+              className="close--close"
+            />
           </div>
-          <form className="form" >
+          <form className="form">
             <input
               type="url"
               name="image"

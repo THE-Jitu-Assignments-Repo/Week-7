@@ -78,7 +78,7 @@
 
 .login--form button{
     max-width: 50%;
-    background-color: blue;
+    background-color: #156192;
     color: #fff;
     border: none;
     padding: 10px;
@@ -89,5 +89,5 @@
     font: 1em sans-serif;
 }
 .login--form button:hover{
-    background-color: rgb(140, 140, 236);
+    background-color: #1256838e;
 }
