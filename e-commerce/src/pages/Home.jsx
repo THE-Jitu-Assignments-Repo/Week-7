@@ -27,16 +27,16 @@ function Home() {
               <img src="./assests/pr1.png" alt="pr1" />
             </div>
             <div className="item">
-              <img src="./assests/pr29.png" alt="pr1" />
+              <img src="./assests/pr29.png" alt="pr2" />
             </div>
             <div className="item">
-              <img src="./assests/pr13.png" alt="pr1" />
+              <img src="./assests/pr13.png" alt="pr3" />
             </div>
             <div className="item">
-              <img src="./assests/pr17.png" alt="pr1" />
+              <img src="./assests/pr17.png" alt="pr4" />
             </div>
             <div className="item">
-              <img src="./assests/pr22.png" alt="pr1" />
+              <img src="./assests/pr22.png" alt="pr5" />
             </div>
           </div>
         </div>

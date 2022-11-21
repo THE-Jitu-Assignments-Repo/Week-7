@@ -1,7 +1,7 @@
 import React from "react";
 import { FaShoppingBag } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { AddCart } from "../../features/products/productSlice";
+import { addtocart } from "../../features/products/productSlice";
 
 import "./productcard.css"
 
@@ -11,7 +11,9 @@ function ProductCard({data,id}) {
     // console.log(data.id);
     const handleCart =(data)=>{
         if( !cart.some(cartItem => cartItem.id == id)){            
-            dispatch(AddCart(data))
+            // dispatch(AddCart(data))
+            // console.log(data);
+            dispatch(addtocart(data))
         }
             
     }
@@ -34,7 +36,7 @@ function ProductCard({data,id}) {
                 <div className="from">Ksh.{data.price}</div>
             </div>
             </div>
-          <div className="product--cart" onClick={()=>handleCart(data.id)}>Add to Cart <FaShoppingBag /></div>
+          <div className="product--cart" onClick={()=>handleCart(data)}>Add to Cart <FaShoppingBag /></div>
         </div>
       </div>
     </div>

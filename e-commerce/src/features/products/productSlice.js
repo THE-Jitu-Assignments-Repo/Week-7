@@ -4,10 +4,13 @@ import {
     createSlice,
     createAsyncThunk
 } from "@reduxjs/toolkit";
+import { async } from '@firebase/util';
 
 
 
 const url = "https://react-e-commerce-ead8d-default-rtdb.firebaseio.com/store.json"
+const url2 = "https://react-e-commerce-ead8d-default-rtdb.firebaseio.com/cart.json"
+
 const initialState = {
     product: [],
     cart: [],
@@ -26,12 +29,15 @@ export const postProduct = createAsyncThunk(
     }
 )
 
+
+
+
 export const getProduct = createAsyncThunk(
     "products/getProduct",
     async () => {
-
+        
         try {
-
+            
             const response = await axios.get(url)
             let fetched = response.data
             let myData = []
@@ -46,14 +52,68 @@ export const getProduct = createAsyncThunk(
                     Quantity: fetched[key].Quantity
                 })
             }
-
+            
             return myData
-
+            
         } catch (err) {
             console.log(err)
         }
     }
+    
+    )
 
+    // add to cart
+    export const addtocart = createAsyncThunk(
+        "products/addtocart",
+        async (item, {dispatch})=>{
+            const response = await axios.post(url2,item)
+            dispatch(getcart())
+            return response.data
+        }
+    )
+    
+    
+    // get cart items
+    
+    export const getcart = createAsyncThunk(
+        "products/getcart",
+        async () => {
+    
+            try {
+    
+                const response = await axios.get(url2)
+                let fetchedcart = response.data
+                let mycartData = []
+                for (let key in fetchedcart) {
+                    mycartData.push({
+                        id: key,
+                        title: fetchedcart[key].title,
+                        description: fetchedcart[key].description,
+                        image: fetchedcart[key].image,
+                        price: fetchedcart[key].price,
+                        discount: fetchedcart[key].discount,
+                        Quantity: fetchedcart[key].Quantity
+                    })
+                }
+    
+                // console.log("dvs", mycartData);
+                return mycartData
+    
+            } catch (err) {
+                console.log(err)
+            }
+        }
+    )
+
+// delete item from cart 
+
+export const deleteItem = createAsyncThunk(
+    "products/deleteItem",
+    async (id,{dispatch})=>{
+        const response = await axios.delete(`https://react-e-commerce-ead8d-default-rtdb.firebaseio.com/cart.json/:${id}`)
+        dispatch(getcart())
+        return response.data
+    }
 )
 
 
@@ -63,11 +123,6 @@ export const productSlice = createSlice({
     name: "products",
     initialState,
     reducers: {
-        AddCart: (state, action) => {
-            let selectedItem = state.product.find(item => item.id === action.payload);
-            state.totalQuantity += 1;
-            state.cart.push(selectedItem);
-        },
         RemoveSingle: (state, action) => {
             let newState = state.cart.filter((item) => item.id !== action.payload);
             state.cart = newState;
@@ -104,13 +159,19 @@ export const productSlice = createSlice({
             }),
             builder.addCase(postProduct.fulfilled, (state, action) => {
                 state.product.push(action.payload);
-            })
+            }),
+        builder.addCase(addtocart.fulfilled, (state,action)=>{
+            state.cart.push(action.payload)
+        }),
+        builder.addCase(getcart.fulfilled, (state,action)=>{
+            state.cart = action.payload;
+
+        })
 
     }
 })
 
 export const {
-    AddCart,
     RemoveSingle,
     addQuantity,
     reduceQuantity,

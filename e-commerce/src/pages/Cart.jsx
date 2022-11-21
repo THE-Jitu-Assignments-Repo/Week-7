@@ -1,7 +1,6 @@
-import React from "react";
-import { FaFileExport } from "react-icons/fa";
+import React, { useEffect} from "react";
 import {  useDispatch, useSelector } from "react-redux";
-import { RemoveALL } from "../features/products/productSlice";
+import { getcart, RemoveALL } from "../features/products/productSlice";
 import Cartcard from "./Cards/Cartcard";
 import "./cart.css"
 
@@ -9,12 +8,14 @@ function Cart() {
   const dispatch = useDispatch()
   const { cart } = useSelector((state) => state.product);
 
-  // console.log("remo test",RemoveALL)
+  // console.log("remo test",cart)
 
   const handleRemove = () => {
     dispatch(RemoveALL())
-    // console.log('remove items')
   }
+    useEffect(() => {
+    dispatch(getcart());
+  }, []);
 
   return (
     <div className="cart--content">

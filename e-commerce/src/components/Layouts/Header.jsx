@@ -60,7 +60,7 @@ function Header() {
             {user && <Link to="/contact" className="links--tag"><FaEnvelope /> Contact</Link>}
             {user && <Link to="cart" className="links--tag">Cart <FaShoppingCart size={20} /><p className="cart--num">{cart?.length}</p></Link>}
             {user && (
-                <div className="dropdown"><span>Settings </span><FaCaretDown/>
+                <div className="dropdown"><span><FaUser size={20}/>Account </span><FaCaretDown/>
                     <div className="dropdown--content">
 
                 <ul>
