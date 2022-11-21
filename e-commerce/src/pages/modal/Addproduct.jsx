@@ -25,21 +25,21 @@ function Addproduct({ setIsOpen }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         // form validation
-        if (
-          e.target.title == "" ||
-          e.target.category == "" ||
-          e.target.description === "" ||
-          e.target.image == "" ||
-          e.target.price == "" ||
-          e.target.discount == ""
-        ) {
-            console.log("validation");
-          alert("Please fill out the whole form to add a new product",);
+        // if (
+        //   e.target.title == "" ||
+        //   e.target.category == "" ||
+        //   e.target.description === "" ||
+        //   e.target.image == "" ||
+        //   e.target.price == "" ||
+        //   e.target.discount == ""
+        // ) {
+        //     console.log("validation");
+        //   alert("Please fill out the whole form to add a new product",);
           
-        }
+        // }
     dispatch(postProduct({ ...newproduct, Quantity: 1 }));
     dispatch(getProduct());
-    // setIsOpen();
+    setIsOpen();
   };
 
   return (

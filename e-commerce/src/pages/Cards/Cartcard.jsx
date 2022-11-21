@@ -32,7 +32,7 @@ function Cartcard({item}) {
             <button onClick={()=>dispatch(addQuantity(item.id))}>+</button>
         </div>
         <div className="cart--price--details">
-            <div className="cart--kash--card">Ksh. {item.price}</div>
+            <div className="cart--kash--card">Ksh. {item.price * item.Quantity}</div>
           <div className="item--discount--cart">Discount: {item.discount}%</div>
           <span className='remove--single' onClick={() => handleRemove(item.id)}>Remove</span>
         </div>

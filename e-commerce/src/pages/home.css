@@ -1,6 +1,6 @@
 .hero--banner {
   position: relative;
-  background-image: url("../../public/assests/slide03.jpg");
+  background-image: url("../../assests/slide03.jpg");
   background-repeat: no-repeat;
   background-size: 100% auto;
   max-height: 100%;
@@ -114,7 +114,7 @@
 
 
 .why--us{
-    background-image: url('../../public/assests/slide02.jpg');
+    background-image: url('../../assests/slide02.jpg');
     height: 60%;
     background-repeat: no-repeat;
     background-size: 100% auto;

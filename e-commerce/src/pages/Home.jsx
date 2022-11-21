@@ -24,19 +24,19 @@ function Home() {
           </div>
           <div className="featured--items">
             <div className="item">
-              <img src="../../public/assests/pr1.png" alt="pr1" />
+              <img src="./assests/pr1.png" alt="pr1" />
             </div>
             <div className="item">
-              <img src="../../public/assests/pr29.png" alt="pr1" />
+              <img src="./assests/pr29.png" alt="pr1" />
             </div>
             <div className="item">
-              <img src="../../public/assests/pr13.png" alt="pr1" />
+              <img src="./assests/pr13.png" alt="pr1" />
             </div>
             <div className="item">
-              <img src="../../public/assests/pr17.png" alt="pr1" />
+              <img src="./assests/pr17.png" alt="pr1" />
             </div>
             <div className="item">
-              <img src="../../public/assests/pr22.png" alt="pr1" />
+              <img src="./assests/pr22.png" alt="pr1" />
             </div>
           </div>
         </div>
