@@ -16,7 +16,7 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
-  const [profilePic, setProfilePic] = useState('');
+  // const [profilePic, setProfilePic] = useState('');
   const dispatch = useDispatch();
 
   const loginToApp = (e) => {
@@ -47,38 +47,38 @@ function Login() {
   };
 
 // A quick check on the name field to make it mandatory
-  const register = () => {
-    if (!name) {
-      return alert('Please enter a full name');
-    }
+  // const register = () => {
+  //   if (!name) {
+  //     return alert('Please enter a full name');
+  //   }
 
     // Create a new user with Firebase
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userAuth) => {
+    // createUserWithEmailAndPassword(auth, email, password)
+    //   .then((userAuth) => {
       // Update the newly created user with a display name and a picture
-        updateProfile(userAuth.user, {
-          displayName: name,
-          photoURL: profilePic,
-        })
-          .then(
+        // updateProfile(userAuth.user, {
+        //   displayName: name,
+        //   photoURL: profilePic,
+        // })
+        //   .then(
             // Dispatch the user information for persistence in the redux state
-            dispatch(
-              login({
-                email: userAuth.user.email,
-                uid: userAuth.user.uid,
-                displayName: name,
-                photoUrl: profilePic,
-              })
-            )
-          )
-          .catch((error) => {
-            console.log('user not updated', error);
-          });
-      })
-      .catch((err) => {
-        alert(err);
-      });
-  };
+  //           dispatch(
+  //             login({
+  //               email: userAuth.user.email,
+  //               uid: userAuth.user.uid,
+  //               displayName: name,
+  //               photoUrl: profilePic,
+  //             })
+  //           )
+  //         )
+  //         .catch((error) => {
+  //           console.log('user not updated', error);
+  //         });
+  //     })
+  //     .catch((err) => {
+  //       alert(err);
+  //     });
+  // };
 
   return (
     <div className='login'>
@@ -92,12 +92,12 @@ function Login() {
             type='text'
           />
 
-          <input
+          {/* <input
             value={profilePic}
             onChange={(e) => setProfilePic(e.target.value)}
             placeholder='Profile picture URL (optional)'
             type='text'
-          />
+          /> */}
           <input
             value={email}
             onChange={(e) => setEmail(e.target.value)}

@@ -38,7 +38,8 @@ function Addproduct({ setIsOpen }) {
         //   alert("Please fill out the whole form to add a new product",);
           
         // }
-    dispatch(postProduct({ ...newproduct, Quantity: 1 }));
+    const Quantity = 1;
+    dispatch(postProduct({ ...newproduct, Quantity, totalPrice: newproduct.price * Quantity }));
     dispatch(getProduct());
     setIsOpen();
   };

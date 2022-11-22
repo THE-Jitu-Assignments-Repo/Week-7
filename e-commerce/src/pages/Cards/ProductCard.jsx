@@ -1,20 +1,33 @@
 import React from "react";
 import { FaShoppingBag } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { addtocart } from "../../features/products/productSlice";
+import { addtocart, getcart } from "../../features/products/productSlice";
 
 import "./productcard.css"
 
 function ProductCard({data,id}) {
+    // console.log('itemId', id);
     const {cart} = useSelector(state=>state.product)
     const dispatch = useDispatch()
     // console.log(data.id);
-    const handleCart =(data)=>{
-        if( !cart.some(cartItem => cartItem.id == id)){            
-            // dispatch(AddCart(data))
-            // console.log(data);
-            dispatch(addtocart(data))
+    const handleCart =async (data)=>{
+        // let cart = await dispatch(getcart());
+        // console.log(cart.payload);
+        // console.log(data.id);
+        // console.log(cart.payload.some(cartItem => cartItem.id === data.id))
+        if (!cart?.some(cartItem => cartItem.id === id)) {
+            console.log('working');
+            // return
+            dispatch(addtocart(data));
         }
+        // dispatch(addtocart(data))
+        // if(!cart?.some(cartItem => cartItem.id == id)){            
+        //     // dispatch(AddCart(data))
+        //     // console.log("skdc 1111",data);
+        //     dispatch(addtocart(data))
+        // }else{
+        //     console.log(data.Quantity);
+        // }
             
     }
  

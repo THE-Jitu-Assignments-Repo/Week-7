@@ -12,10 +12,13 @@ export const userSlice = createSlice({
         logout:(state)=>{
             state.user = null
         },
+        RegisterUser:(state,action)=>{
+            state.user = action.payload
+        }
     },
 });
 
-export const { login, logout} = userSlice.actions;
+export const { login, logout, Register} = userSlice.actions;
 
 // state selector
 

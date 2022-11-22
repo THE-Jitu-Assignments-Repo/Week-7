@@ -50,10 +50,11 @@ export const getProduct = createAsyncThunk(
                     image: fetched[key].image,
                     price: fetched[key].price,
                     discount: fetched[key].discount,
-                    Quantity: fetched[key].Quantity
+                    Quantity: fetched[key].Quantity,
+                    totalPrice: fetched[key].totalPrice
                 })
             }
-            
+            console.log(myData);
             return myData
             
         } catch (err) {
@@ -67,6 +68,7 @@ export const getProduct = createAsyncThunk(
     export const addtocart = createAsyncThunk(
         "products/addtocart",
         async (item, {dispatch})=>{
+            // console.log(item)
             const response = await axios.post(url2,item)
             dispatch(getcart())
             return response.data
@@ -87,13 +89,15 @@ export const getProduct = createAsyncThunk(
                 let mycartData = []
                 for (let key in fetchedcart) {
                     mycartData.push({
-                        id: key,
+                        cartId: key,
+                        id: fetchedcart[key].id,
                         title: fetchedcart[key].title,
                         description: fetchedcart[key].description,
                         image: fetchedcart[key].image,
                         price: fetchedcart[key].price,
                         discount: fetchedcart[key].discount,
-                        Quantity: fetchedcart[key].Quantity
+                        Quantity: fetchedcart[key].Quantity,
+                        totalPrice: fetchedcart[key].totalPrice
                     })
                 }
     
@@ -114,7 +118,7 @@ export const deleteItem = createAsyncThunk(
 
         // const {id} = useParams
         const response = await axios.delete(`https://react-e-commerce-ead8d-default-rtdb.firebaseio.com/cart/${id}.json`);
-        console.log(response)
+        // console.log(response)
         dispatch(getcart());
 
     // await state.cart.filter((item) => {
@@ -138,15 +142,11 @@ export const productSlice = createSlice({
     name: "products",
     initialState,
     reducers: {
-        // RemoveSingle: (state, action) => {
-        //     let newState = state.cart.filter((item) => item.id !== action.payload);
-        //     state.cart = newState;
-        // },
         addQuantity: (state, action) => {
             const selectedQ = state.cart.map(item => {
                 if (item.id === action.payload) {
-                    item.Quantity += 1
-                    
+                    item.Quantity +=1
+                    item.totalPrice *= item.Quantity
                 }
                 return item
             })
@@ -157,6 +157,7 @@ export const productSlice = createSlice({
             const selectedQ = state.cart.map(item => {
                 if (item.id === action.payload) {
                     item.Quantity -= 1
+                    item.totalPrice -=item.price
                 } 
                 return item
             })
@@ -164,9 +165,6 @@ export const productSlice = createSlice({
 
             state.cart = selectedQ 
         },
-        RemoveALL: (state)=>{
-            state.cart = [];
-        }
     },
     extraReducers(builder) {
         builder.addCase(getProduct.fulfilled, (state, action) => {
@@ -181,18 +179,14 @@ export const productSlice = createSlice({
         builder.addCase(getcart.fulfilled, (state,action)=>{
             state.cart = action.payload;
 
-        }), builder.addCase(deleteItem.fulfilled, (state, action)=>{
-            console.log("del", action.payload)
         })
 
     }
 })
 
 export const {
-    RemoveSingle,
     addQuantity,
     reduceQuantity,
-    RemoveALL
 } = productSlice.actions;
 
 export default productSlice.reducer;

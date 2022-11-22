@@ -1,6 +1,6 @@
 import React, { useEffect} from "react";
 import {  useDispatch, useSelector } from "react-redux";
-import { deleteItem, getcart, RemoveALL } from "../features/products/productSlice";
+import { deleteItem, getcart} from "../features/products/productSlice";
 import Cartcard from "./Cards/Cartcard";
 import "./cart.css"
 
@@ -10,10 +10,10 @@ function Cart() {
 
 
   const handleRemove = () => {
-    cart?.map(item => dispatch(deleteItem(item.id)))
+    cart?.map(item => dispatch(deleteItem(item.cartId)))
   }
 
-
+  const totalCart = cart?.reduce((total,item)=> total + Number(item.totalPrice),0)
 
     useEffect(() => {
     dispatch(getcart());
@@ -30,7 +30,7 @@ function Cart() {
       ))}
       <div className="total--session">
       <hr/>
-      <span>Total:  </span>
+      <span>Total: Ksh. {totalCart}</span>
 
       </div>
 

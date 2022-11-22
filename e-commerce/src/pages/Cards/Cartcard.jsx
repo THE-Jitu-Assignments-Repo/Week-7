@@ -1,10 +1,11 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { addQuantity, deleteItem, reduceQuantity, RemoveSingle } from '../../features/products/productSlice'
+import { useDispatch} from 'react-redux'
+import { addQuantity, deleteItem, reduceQuantity} from '../../features/products/productSlice'
 import "./CartCard.css"
 
 
 function Cartcard({item}) {
+    // console.log(item)
     const dispatch = useDispatch()
 
     const handleRemove = (Cid)=>{
@@ -18,7 +19,7 @@ function Cartcard({item}) {
         }
         dispatch(reduceQuantity(item.id))
     }
-    
+
   return (
     <div className='cart--card' key={item.id}>
         <div className="image">
@@ -34,9 +35,9 @@ function Cartcard({item}) {
             <button onClick={()=>dispatch(addQuantity(item.id))}>+</button>
         </div>
         <div className="cart--price--details">
-            <div className="cart--kash--card">Ksh. {item.price * item.Quantity}</div>
+            <div className="cart--kash--card">Ksh. {item.totalPrice}</div>
           <div className="item--discount--cart">Discount: {item.discount}%</div>
-          <span className='remove--single' onClick={() => handleRemove(item.id)}>Remove</span>
+          <span className='remove--single' onClick={() => handleRemove(item.cartId)}>Remove</span>
         </div>
     </div>
   )

@@ -97,7 +97,7 @@ function Products() {
         </div>
         <div className="content--content">
           {product?.map((data) => (
-             <ProductCard id={data.id} data={data}/>
+             <ProductCard id={data.id} data={data} />
           ))}
         </div>
       </div>
