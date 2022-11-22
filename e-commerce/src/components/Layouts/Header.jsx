@@ -58,7 +58,7 @@ function Header() {
             {user && <Link to="/products" className="links--tag">Products<BsFillBasket3Fill /></Link>}
             {user && <Link to="/about"  className="links--tag">About<FaInfoCircle /> </Link>}
             {user && <Link to="/contact" className="links--tag">Contact<FaEnvelope /> </Link>}
-            {user && <Link to="cart" className="links--tag">Cart <FaShoppingCart size={20} /><p className="cart--num">{cart?.map(item=>item.Quantity)}</p></Link>}
+            {user && <Link to="cart" className="links--tag">Cart <FaShoppingCart size={20} /><p className="cart--num">{cart?.reduce((total, item)=> total+item.Quantity,0)}</p></Link>}
             {user && (
                 <div className="dropdown"><span><FaUser size={20}/>Account </span><FaCaretDown/>
                     <div className="dropdown--content">
