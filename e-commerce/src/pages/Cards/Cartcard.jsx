@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { addQuantity, reduceQuantity, RemoveSingle } from '../../features/products/productSlice'
+import { addQuantity, deleteItem, reduceQuantity, RemoveSingle } from '../../features/products/productSlice'
 import "./CartCard.css"
 
 
@@ -8,12 +8,13 @@ function Cartcard({item}) {
     const dispatch = useDispatch()
 
     const handleRemove = (Cid)=>{
-        dispatch(RemoveSingle(Cid))
+        console.log('clicked')
+        dispatch(deleteItem(Cid))
     }
 
     const handleDecrease =(dd)=>{
-        if (item.Quantity < 1){
-            dispatch(RemoveSingle(dd))
+        if (item.Quantity <= 1){
+            dispatch(deleteItem(dd))
         }
         dispatch(reduceQuantity(item.id))
     }

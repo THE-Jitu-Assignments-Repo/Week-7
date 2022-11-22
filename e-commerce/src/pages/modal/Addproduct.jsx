@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { AiOutlineCloseSquare } from "react-icons/ai";
+import { FaCross, FaPlus } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { getProduct, postProduct } from "../../features/products/productSlice";
 import "./modal.css";
@@ -98,7 +99,7 @@ function Addproduct({ setIsOpen }) {
               value={newproduct.discount}
               onChange={handleChange}
             />
-            <button onClick={handleSubmit}>Submit</button>
+            <button onClick={handleSubmit}><FaPlus />ADD PODUCT </button>
           </form>
         </div>
       </div>

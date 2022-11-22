@@ -56,3 +56,16 @@
     color: gold;
     cursor: pointer;
 }
+
+.form button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transform: scale(1);
+}
+
+.form button:hover{
+    transform: scale(.9);
+
+}

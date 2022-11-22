@@ -26,6 +26,12 @@ function Cart() {
       {cart?.map((item) => (
         <Cartcard item={item} />
       ))}
+      <div className="total--session">
+      <hr/>
+      <span>Total:  </span>
+
+      </div>
+
     </div>
   );
 }

@@ -5,6 +5,7 @@ import {
     createAsyncThunk
 } from "@reduxjs/toolkit";
 import { async } from '@firebase/util';
+import { useParams } from 'react-router-dom';
 
 
 
@@ -110,9 +111,23 @@ export const getProduct = createAsyncThunk(
 export const deleteItem = createAsyncThunk(
     "products/deleteItem",
     async (id,{dispatch})=>{
-        const response = await axios.delete(`https://react-e-commerce-ead8d-default-rtdb.firebaseio.com/cart.json/:${id}`)
-        dispatch(getcart())
-        return response.data
+
+        // const {id} = useParams
+        const response = await axios.delete(`https://react-e-commerce-ead8d-default-rtdb.firebaseio.com/cart/${id}.json`);
+        console.log(response)
+        dispatch(getcart());
+
+    // await state.cart.filter((item) => {
+    //     if(item.id === id){
+
+    //         const response = axios.delete(`https://react-e-commerce-ead8d-default-rtdb.firebaseio.com/cart.json/:${id}`)
+    //         console.log(response)
+    //         dispatch(getcart())
+    //         return response.data
+    //     }
+    
+    // });
+
     }
 )
 
@@ -123,10 +138,10 @@ export const productSlice = createSlice({
     name: "products",
     initialState,
     reducers: {
-        RemoveSingle: (state, action) => {
-            let newState = state.cart.filter((item) => item.id !== action.payload);
-            state.cart = newState;
-        },
+        // RemoveSingle: (state, action) => {
+        //     let newState = state.cart.filter((item) => item.id !== action.payload);
+        //     state.cart = newState;
+        // },
         addQuantity: (state, action) => {
             const selectedQ = state.cart.map(item => {
                 if (item.id === action.payload) {
@@ -166,6 +181,8 @@ export const productSlice = createSlice({
         builder.addCase(getcart.fulfilled, (state,action)=>{
             state.cart = action.payload;
 
+        }), builder.addCase(deleteItem.fulfilled, (state, action)=>{
+            console.log("del", action.payload)
         })
 
     }

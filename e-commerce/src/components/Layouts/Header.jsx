@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { auth, onAuthStateChanged } from "../../config/firebase";
 import { logout, selectUser, login } from "../../features/auth/userSlice";
 import { Link, useNavigate } from "react-router-dom";
-import {FaCaretDown, FaEnvelope, FaShoppingCart, FaUser, FaUserLock} from 'react-icons/fa'
+import {FaCaretDown, FaEnvelope, FaInfo, FaInfoCircle, FaShoppingCart, FaUser, FaUserLock} from 'react-icons/fa'
 import {BsFillBasket3Fill} from 'react-icons/bs'
 import "./Layout.css";
 
@@ -55,9 +55,9 @@ function Header() {
           <nav className="nav--links">
             {!user &&<Link to="login" className="links--tag"><FaUser /> Login/Register</Link>}
             {user && <Link to="home" className="links--tag">Home</Link> }  
-            {user && <Link to="/products" className="links--tag"><BsFillBasket3Fill />Products</Link>}
-            {user && <Link to="/about"  className="links--tag">About</Link>}
-            {user && <Link to="/contact" className="links--tag"><FaEnvelope /> Contact</Link>}
+            {user && <Link to="/products" className="links--tag">Products<BsFillBasket3Fill /></Link>}
+            {user && <Link to="/about"  className="links--tag">About<FaInfoCircle /> </Link>}
+            {user && <Link to="/contact" className="links--tag">Contact<FaEnvelope /> </Link>}
             {user && <Link to="cart" className="links--tag">Cart <FaShoppingCart size={20} /><p className="cart--num">{cart?.length}</p></Link>}
             {user && (
                 <div className="dropdown"><span><FaUser size={20}/>Account </span><FaCaretDown/>
