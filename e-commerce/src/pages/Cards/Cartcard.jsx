@@ -8,7 +8,7 @@ function Cartcard({item}) {
     const dispatch = useDispatch()
 
     const handleRemove = (Cid)=>{
-        console.log('clicked')
+        
         dispatch(deleteItem(Cid))
     }
 
@@ -18,6 +18,7 @@ function Cartcard({item}) {
         }
         dispatch(reduceQuantity(item.id))
     }
+    
   return (
     <div className='cart--card' key={item.id}>
         <div className="image">

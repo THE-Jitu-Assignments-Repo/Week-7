@@ -1,6 +1,6 @@
 import React, { useEffect} from "react";
 import {  useDispatch, useSelector } from "react-redux";
-import { getcart, RemoveALL } from "../features/products/productSlice";
+import { deleteItem, getcart, RemoveALL } from "../features/products/productSlice";
 import Cartcard from "./Cards/Cartcard";
 import "./cart.css"
 
@@ -8,11 +8,13 @@ function Cart() {
   const dispatch = useDispatch()
   const { cart } = useSelector((state) => state.product);
 
-  // console.log("remo test",cart)
 
   const handleRemove = () => {
-    dispatch(RemoveALL())
+    cart?.map(item => dispatch(deleteItem(item.id)))
   }
+
+
+
     useEffect(() => {
     dispatch(getcart());
   }, []);
