@@ -6,7 +6,8 @@ import {
 } from "@reduxjs/toolkit";
 import { async } from '@firebase/util';
 import { useParams } from 'react-router-dom';
-
+import { validateProductSchema } from '../../Helpers/Validation';
+import { toast } from "react-toastify"
 
 
 const url = "https://react-e-commerce-ead8d-default-rtdb.firebaseio.com/store.json"
@@ -22,11 +23,17 @@ const initialState = {
 export const postProduct = createAsyncThunk(
     "products/postProducts",
     async (product, thunkApi) => {
+        try{
 
-        const response = await axios.post(url, product)
-
-        thunkApi.dispatch(getProduct()) // mike note this very key "wisdom"
-        return response.data
+            await validateProductSchema(product)
+            const response = await axios.post(url, product)
+    
+            thunkApi.dispatch(getProduct()) // mike note this very key "wisdom"
+            toast.success("Successfully Added product")
+            return response.data
+        } catch(error){
+            toast.error(error.message, {})
+        }
     }
 )
 

@@ -7,6 +7,7 @@ import Cart from "../pages/Cart";
 import Layout from "../components/Layouts/Layout";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
+import Notfound from "../pages/Notfound";
 
 
 const Routers = () => {
@@ -22,7 +23,7 @@ const Routers = () => {
         <Route path="login" element={<Login />} />
         <Route path="/login/register" element={<Register />} />
         <Route path="/" element={<Home />}/> 
-        <Route path="*" element="404" />
+        <Route path="*" element={<Notfound />}/>
       </Route>
     </Routes>
   );

@@ -24,20 +24,7 @@ function Addproduct({ setIsOpen }) {
     };
     
     const handleSubmit = (e) => {
-        e.preventDefault();
-        // form validation
-        // if (
-        //   e.target.title == "" ||
-        //   e.target.category == "" ||
-        //   e.target.description === "" ||
-        //   e.target.image == "" ||
-        //   e.target.price == "" ||
-        //   e.target.discount == ""
-        // ) {
-        //     console.log("validation");
-        //   alert("Please fill out the whole form to add a new product",);
-          
-        // }
+        e.preventDefault();       
     const Quantity = 1;
     dispatch(postProduct({ ...newproduct, Quantity, totalPrice: newproduct.price * Quantity }));
     dispatch(getProduct());
