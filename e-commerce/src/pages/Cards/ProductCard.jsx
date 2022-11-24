@@ -32,7 +32,7 @@ function ProductCard({data,id}) {
     }
  
   return (
-    <div className="product--card" key={data.id}>
+    <div className="product--card" key={id}>
       <div className="product--card__top">
           <div className="product--rate">-{data.discount}%</div>
         <img src={data.image} alt="product--img" className="image--product"/>

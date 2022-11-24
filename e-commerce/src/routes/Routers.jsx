@@ -6,6 +6,7 @@ import About from "../pages/About";
 import Cart from "../pages/Cart";
 import Layout from "../components/Layouts/Layout";
 import Login from "../pages/Login";
+import Register from "../pages/Register";
 
 
 const Routers = () => {
@@ -19,6 +20,7 @@ const Routers = () => {
         <Route path="about" element={<About />} />
         <Route path="cart" element={<Cart />} />
         <Route path="login" element={<Login />} />
+        <Route path="/login/register" element={<Register />} />
         <Route path="/" element={<Home />}/> 
         <Route path="*" element="404" />
       </Route>

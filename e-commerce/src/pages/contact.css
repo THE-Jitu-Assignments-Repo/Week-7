@@ -1,0 +1,31 @@
+.contact--main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.contact--img{
+    /* border: 2px solid red; */
+    padding: 20px;
+    width: 40%;
+
+}
+.contact--img img{
+    width: 100%;
+    object-fit: contain;
+    height: auto;
+    border-radius: 50%;;
+}
+
+.contact--form--item--label-text{
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #000000;
+    margin-bottom: 10px;
+    text-align: center;
+    margin-top: 10px;
+    text-transform: capitalize;
+    font-family: 'Poppins', sans-serif;
+}

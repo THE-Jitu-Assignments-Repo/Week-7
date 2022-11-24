@@ -18,7 +18,7 @@ export const userSlice = createSlice({
     },
 });
 
-export const { login, logout, Register} = userSlice.actions;
+export const { login, logout, RegisterUser} = userSlice.actions;
 
 // state selector
 

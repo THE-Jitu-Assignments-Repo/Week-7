@@ -14,7 +14,7 @@ function Cartcard({item}) {
     }
 
     const handleDecrease =(dd)=>{
-        if (item.Quantity <= 1){
+        if (item.Quantity < 1){
             dispatch(deleteItem(dd))
         }
         dispatch(reduceQuantity(item.id))

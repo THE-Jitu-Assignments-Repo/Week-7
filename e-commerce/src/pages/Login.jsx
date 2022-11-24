@@ -7,7 +7,7 @@ import {
 } from '../config/firebase';
 import { useDispatch } from 'react-redux';
 import { login } from '../features/auth/userSlice';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './login.css'
 
 function Login() {
@@ -15,7 +15,7 @@ function Login() {
 // use state constants for the the form inputs
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [name, setName] = useState('');
+  // const [name, setName] = useState('');
   // const [profilePic, setProfilePic] = useState('');
   const dispatch = useDispatch();
 
@@ -85,12 +85,12 @@ function Login() {
       <div className='login--form--container' >
           <h2>Login to E-market</h2>
         <form className='login--form'>
-          <input
+          {/* <input
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder='Full name (required for registering)'
             type='text'
-          />
+          /> */}
 
           {/* <input
             value={profilePic}
@@ -117,9 +117,10 @@ function Login() {
 
         <p>
           Not a member?{' '}
-          <span className='login__register' onClick={register}>
+          <Link to={'register'} ><span className='login__register'>
             Register Now
-          </span>
+          </span> </Link>
+          
         </p>
       </div>
     </div>

@@ -1,8 +1,33 @@
 import React from 'react'
+import './about.css'
 
 function About() {
   return (
-    <div>About</div>
+    <div className='about--content'>
+      <div className="about">
+        <div className="img--about">
+          <img src="./assests/About.svg" alt="about" />
+        </div>
+        <div className="img--about--text">
+
+        <h1>About</h1>
+        <p>
+          <a href="https://github.com/mik284">
+            Github
+          </a>
+        </p>
+
+        <p>
+          <a href="https://github.com/mik284">
+            License
+          </a>
+        </p>
+        </div>
+
+
+
+      </div>
+    </div>
   )
 }
 

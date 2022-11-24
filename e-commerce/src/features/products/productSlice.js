@@ -146,7 +146,7 @@ export const productSlice = createSlice({
             const selectedQ = state.cart.map(item => {
                 if (item.id === action.payload) {
                     item.Quantity +=1
-                    item.totalPrice *= item.Quantity
+                    item.totalPrice += item.totalPrice
                 }
                 return item
             })
